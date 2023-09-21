@@ -1,0 +1,213 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>http 协议基本格式 | SweiJ的博客 | 望开开心心每一天！</title>
+
+  
+  <meta name="author" content="Swei">
+  
+
+  
+  <meta name="description" content="日常随笔">
+  
+
+  
+  <meta name="keywords" content="随笔">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="http 协议基本格式"/>
+
+  <meta property="og:site_name" content="SweiJ的博客"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="SweiJ的博客" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">SweiJ的博客</a>
+    </h1>
+    <p class="site-description">望开开心心每一天！</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>http 协议基本格式</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2023/09/21/http-协议基本格式/" rel="bookmark">
+        <time class="entry-date published" datetime="2023-09-21T01:41:41.000Z">
+          2023-09-21
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h1 id="一-http是什么"><a href="#一-http是什么" class="headerlink" title="一. http是什么"></a>一. http是什么</h1><p>http(超文本传输协议)是应用层协议 </p>
+<p>http大部分基于传输层TCP协议实现, 其中http1.0、http1.1、http2.0均为TCP, http3基于UDP实现</p>
+<p>当我们使用浏览器访问一个网页时, 首先用户向服务器发送一个http请求, 然后服务器收到这个请求会返回一个http响应数据</p>
+<p><img src="https://img-blog.csdnimg.cn/9b2ca8cc3bbf4b40b603cbe8779f0ab3.png" alt="在这里插入图片描述">事实上, 当我们访问一个网站时, 可能涉及不止一次的http请求&#x2F;响应的交互过程</p>
+<h1 id="二-抓包工具"><a href="#二-抓包工具" class="headerlink" title="二. 抓包工具"></a>二. 抓包工具</h1><p>下面我们使用Fiddler对http请求&#x2F;响应进行抓取</p>
+<p><a  href ="https://www.telerik.com/fiddler/">Fiddler下载 </a></p>
+<p>打开Fiddler我们可以看到很多抓取到的http请求&#x2F;响应</p>
+<p><img src="https://img-blog.csdnimg.cn/40b6a9defaf44561a5d09edb8b7ce50d.png" alt="在这里插入图片描述"></p>
+<h2 id="1-抓包工具原理"><a href="#1-抓包工具原理" class="headerlink" title="1. 抓包工具原理"></a>1. 抓包工具原理</h2><p>Fiddler相当于一个”代理”</p>
+<p>当浏览器访问一个网址时, 首先会把http请求先发给Fiddler, Fiddler再把请求转发给服务器, 当服务器返回数据时, Fiddler拿到返回数据, 再把数据交给浏览器</p>
+<p><img src="https://img-blog.csdnimg.cn/c83e9f6943ff4d418310bc41f99eec75.png" alt="在这里插入图片描述"></p>
+<h3 id="a-抓包结果"><a href="#a-抓包结果" class="headerlink" title="a) 抓包结果**"></a>a) 抓包结果**</h3><p><strong>http请求</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">GET https://www.csdn.net/community/toolbar-api/v1/get-user-info HTTP/1.1</span><br><span class="line">Host: www.csdn.net</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:100.0) Gecko/20100101 Firefox/100.0</span><br><span class="line">Accept: application/json, text/javascript, */*; q=0.01</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2</span><br><span class="line">Accept-Encoding: gzip, deflate, br</span><br><span class="line">Referer: https://blog.csdn.net/qq_54219272/article/details/123853319</span><br><span class="line">Content-Type: application/x-www-form-urlencoded; charset=utf-8</span><br><span class="line">Origin: https://blog.csdn.net</span><br><span class="line">Connection: keep-alive</span><br><span class="line">Cookie: uuid_tt_dd=10_18653979800-1652881261106-378096; </span><br><span class="line">Sec-Fetch-Dest: empty</span><br><span class="line">Sec-Fetch-Mode: cors</span><br><span class="line">Sec-Fetch-Site: same-site</span><br></pre></td></tr></table></figure>
+<p><strong>首行</strong>: 方法 + url + 版本<br><strong>Header</strong>: 请求的属性, 冒号分隔的键值对, 每组属性之间使用\n分隔, 遇到空行表示Header部分结束<br><strong>Body</strong>: 空行后面的内容都是Body, Body允许为空字符串, 如果Body存在. 则在Header中会有一个Content-Length属性来标识Body的长度</p>
+<p><strong>http响应</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Server: openresty</span><br><span class="line">Date: Thu, 19 May 2022 10:27:12 GMT</span><br><span class="line">Content-Type: application/json;charset=utf-8</span><br><span class="line">Transfer-Encoding: chunked</span><br><span class="line">Connection: keep-alive</span><br><span class="line">Keep-Alive: <span class="built_in">timeout</span>=20</span><br><span class="line">Vary: Origin</span><br><span class="line">Vary: Access-Control-Request-Method</span><br><span class="line">Vary: Access-Control-Request-Headers</span><br><span class="line">Access-Control-Allow-Origin: https://blog.csdn.net</span><br><span class="line">Access-Control-Allow-Credentials: <span class="literal">true</span></span><br><span class="line">Strict-Transport-Security: max-age=31536000</span><br><span class="line"></span><br><span class="line">b4</span><br><span class="line">&#123;<span class="string">&quot;code&quot;</span>:200,<span class="string">&quot;msg&quot;</span>:<span class="string">&quot;success&quot;</span>,<span class="string">&quot;data&quot;</span>:&#123;<span class="string">&quot;nickName&quot;</span>:<span class="string">&quot;IT自习小空间&quot;</span>,<span class="string">&quot;avatar&quot;</span>:<span class="string">&quot;https://profile.csdnimg.cn/f/7/2/3_jiangnb520&quot;</span>,<span class="string">&quot;fansCount&quot;</span>:79,<span class="string">&quot;likeCount&quot;</span>:31,<span class="string">&quot;vip&quot;</span>:2,<span class="string">&quot;followCount&quot;</span>:35&#125;&#125;</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
+<p><strong>首行</strong>: 版本号 + 状态码 + 状态码解释<br><strong>Header</strong>: 请求的属性, 冒号分隔的键值对, 每组属性之间使用\n分隔, 遇到空行表示Header部分结束<br><strong>Body</strong>: 空行后面的内容都是Body, Body允许为空字符串, 如果Body存在, 则在Header中会有一个Content-Length属性来标识Body的长度, 如果服务器返回一个html页面, 那么html页面内容就是在body中</p>
+<h1 id="三-http请求"><a href="#三-http请求" class="headerlink" title="三. http请求"></a>三. http请求</h1><h2 id="1-认识URL"><a href="#1-认识URL" class="headerlink" title="1. 认识URL"></a>1. 认识URL</h2><p>URL(Uniform Resource Location)统一资源定位符<br><img src="https://img-blog.csdnimg.cn/a9ca6dac61fa481688c86475f70ed279.png" alt="在这里插入图片描述">query string: 这是一个以键值对结构形式存在, 主要是为了定制传输我们需要的信息给服务器</p>
+<p>URL中可省略的部分</p>
+<ul>
+<li>协议名: 省略后默认为http:&#x2F;&#x2F;</li>
+<li>ip地址&#x2F;域名: 在HTML中可以省略, 省略后表示服务器的ip域名与当前所属的ip&#x2F;域名一致</li>
+<li>端口号: http端口号为80, https端口号为433</li>
+<li>文件路径: 可以省略, 省略后相当于&#x2F;, 有些服务器会在发现&#x2F;路径的时候自动访问&#x2F;index,html</li>
+<li>查询字符串: 可以省略</li>
+<li>片段标识: 可以省略</li>
+</ul>
+<p><strong>URL encode</strong></p>
+<p>一个中文字符由 UTF-8 或者 GBK 这样的编码方式构成, 虽然在 URL 中没有特殊含义, 但是仍然需要进行转义. 否则浏览器可能把 UTF-8&#x2F;GBK 编码中的某个字节当做 URL 中的特殊符号.<br>转义的规则如下: 将需要转码的字符转为16进制，然后从右到左，取4位(不足4位直接处理)，每2位做一位，前面加上%，编码成%XY格式, 如下图<br><img src="https://img-blog.csdnimg.cn/01854edee3d743d99b63b1131c46ba63.png" alt="在这里插入图片描述"></p>
+<h2 id="2-认识方法-method"><a href="#2-认识方法-method" class="headerlink" title="2. 认识方法(method)"></a>2. 认识方法(method)</h2><h3 id="a-GET-POST方法"><a href="#a-GET-POST方法" class="headerlink" title="a) GET&#x2F;POST方法"></a>a) GET&#x2F;POST方法</h3><p>GET和POST方法是HTTP最常见的方法</p>
+<p> <strong>GET</strong></p>
+<p>GET常用于获取服务器上的某个资源, 浏览器直接输入URL发送的是一个GET请求, HTML中的link、img、script等标签, 也会触发GET请求, JavaScript中的ajax也能构造GET请求</p>
+<p>使用Fiddler抓取一个GET请求</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">GET https://www.sogou.com/ HTTP/1.1</span><br><span class="line">Host: www.sogou.com</span><br><span class="line">Connection: keep-alive</span><br><span class="line">Cache-Control: max-age=0</span><br><span class="line">sec-ch-ua: <span class="string">&quot; Not;A Brand&quot;</span>;v=<span class="string">&quot;99&quot;</span>, <span class="string">&quot;Google Chrome&quot;</span>;v=<span class="string">&quot;91&quot;</span>, <span class="string">&quot;Chromium&quot;</span>;v=<span class="string">&quot;91&quot;</span></span><br><span class="line">sec-ch-ua-mobile: ?0</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,</span><br><span class="line">like Gecko) Chrome/91.0.4472.77 Safari/537.36</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>可以看到GET请求的首行第一部分为GET, URL的query, string可以为空, 也可以不为空, header部分有若干个键值对结构, body部分为空. </p>
+<p><strong>POST</strong></p>
+<p>POST请求多用于提交数据给服务器(例如登陆账号)</p>
+<p>可以通过form表单或者ajax构造POST请求</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">POST https://v.bitedu.vip/tms/login HTTP/1.1</span><br><span class="line">Host: v.bitedu.vip</span><br><span class="line">Connection: keep-alive</span><br><span class="line">Content-Length: 105</span><br><span class="line">sec-ch-ua: <span class="string">&quot; Not;A Brand&quot;</span>;v=<span class="string">&quot;99&quot;</span>, <span class="string">&quot;Google Chrome&quot;</span>;v=<span class="string">&quot;91&quot;</span>, <span class="string">&quot;Chromium&quot;</span>;v=<span class="string">&quot;91&quot;</span></span><br><span class="line">sec-ch-ua-mobile: ?0</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,</span><br><span class="line">like Gecko) Chrome/91.0.4472.77 Safari/537.36</span><br><span class="line">Content-Type: application/json;charset=UTF-8</span><br><span class="line">Access-Control-Allow-Origin: *</span><br><span class="line">Accept: application/json, text/plain, */*</span><br><span class="line">Access-Control-Allow-Headers: Content-Type, Content-Length, Authorization,</span><br><span class="line">Accept, X-Requested-With , yourHeaderFeild</span><br><span class="line">Origin: https://v.bitedu.vip</span><br><span class="line">Sec-Fetch-Site: same-origin</span><br><span class="line">Sec-Fetch-Mode: cors</span><br><span class="line">Sec-Fetch-Dest: empty</span><br><span class="line">Referer: https://v.bitedu.vip/login</span><br><span class="line">Accept-Encoding: gzip, deflate, br</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.9,en;q=0.8</span><br><span class="line">Cookie: username=123456789; rememberMe=<span class="literal">true</span></span><br><span class="line"></span><br><span class="line">&#123;<span class="string">&quot;username&quot;</span>:<span class="string">&quot;123456789&quot;</span>,<span class="string">&quot;password&quot;</span>:<span class="string">&quot;xxxx&quot;</span>,<span class="string">&quot;code&quot;</span>:<span class="string">&quot;jw7l&quot;</span>,<span class="string">&quot;uuid&quot;</span>:<span class="string">&quot;d110a05ccde64b16</span></span><br><span class="line"><span class="string">a861fa2bddfdcd15&quot;</span>&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>首行第一部分为POST, URL的query string一般为空(也可以不为空), header部分有若干个键值对结构, body一般不为空, body内的数据格式通过header中的Content-Type指定, body的长度由header中的Content-Length指定</p>
+<h3 id="b-其他方法"><a href="#b-其他方法" class="headerlink" title="b) 其他方法"></a>b) 其他方法</h3><ul>
+<li><p>PUT和POST类似, 知识具有冥等特性, 一般用于更新</p>
+</li>
+<li><p>DELETE删除服务器指定资源</p>
+</li>
+<li><p>OPTIONS返回服务器所支持的请求方法</p>
+</li>
+<li><p>HEAD类似于GET, 只不过响应体不返回, 只返回响应头</p>
+</li>
+<li><p>TRACE回显服务器端收到的请求, 测试的时候会用到这个</p>
+</li>
+<li><p>CONNECT预留, 暂无使用</p>
+</li>
+</ul>
+<h2 id="3-认识部分请求”报头”字段"><a href="#3-认识部分请求”报头”字段" class="headerlink" title="3. 认识部分请求”报头”字段"></a>3. 认识部分请求”报头”字段</h2><p>Content-Type</p>
+<p>表示请求的body中的数据格式</p>
+<ul>
+<li><p>application&#x2F;x-www-from-urlencoded: form表单提交的数据格式, body格式形如: <code>title=test&amp;content=hello</code></p>
+</li>
+<li><p>multipart&#x2F;form-data: 通常用于提交图片&#x2F;文件</p>
+</li>
+<li><p>application&#x2F;json: 数据json格式, body格式形如</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">&quot;username&quot;</span>:<span class="string">&quot;123456789&quot;</span>,<span class="string">&quot;password&quot;</span>:<span class="string">&quot;xxxx&quot;</span>,<span class="string">&quot;code&quot;</span>:<span class="string">&quot;jw7l&quot;</span>,<span class="string">&quot;uuid&quot;</span>:<span class="string">&quot;d110a05ccde64b16a861fa2bddfdcd15&quot;</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Cookie</p>
+<p>Cookie中存储了一个字符串, 这个数据可能是客户端(网页)自行通过js写入的, 也坑你来自于服务器, 主要用来实现”身份标识”功能</p>
+<h1 id="四-http响应"><a href="#四-http响应" class="headerlink" title="四. http响应"></a>四. http响应</h1><h2 id="1-认识状态码"><a href="#1-认识状态码" class="headerlink" title="1. 认识状态码"></a>1. 认识状态码</h2><p><strong>200 OK</strong>: 表示访问成功</p>
+<p><strong>404 Not Found</strong>: 表示这个URL标识的资源不存在</p>
+<p><strong>403 Forbidden</strong>: 表示访问被拒绝, 有的页面需要用户具有一定的权限才能访问</p>
+<p><strong>405 Menthod Not Allowed</strong>: 表示对方的服务器不支持所有的方法或者不允许用户使用一些其他的方法</p>
+<p><strong>500 Internal Server Error</strong>: 服务器内部错误, 一般都是服务器代码在执行过程中遇到了一些异常</p>
+<p><strong>504 Gateway Timeout</strong>: 服务器负载比较大时, 服务器处理单条请求的时候消耗的时间就会很长, 会导致出现超时情况</p>
+<p><strong>302 Move temporarily</strong>: 临时重定向, 一般用于实现登陆成功自动跳转到主页</p>
+<p><strong>301 Moved Permanently</strong>: 永久重定向</p>
+<h2 id="2-认识响应”正文”"><a href="#2-认识响应”正文”" class="headerlink" title="2. 认识响应”正文”"></a>2. 认识响应”正文”</h2><p>text&#x2F;html</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">Server: nginx/1.17.3</span><br><span class="line">Date: Thu, 10 Jun 2021 07:25:09 GMT</span><br><span class="line">Content-Type: text/html; charset=utf-8</span><br><span class="line">Last-Modified: Thu, 13 May 2021 09:01:26 GMT</span><br><span class="line">Connection: keep-alive</span><br><span class="line">ETag: W/<span class="string">&quot;609ceae6-3206&quot;</span></span><br><span class="line">Content-Length: 12806</span><br><span class="line">&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;<span class="built_in">head</span>&gt;&lt;meta charset=utf-8&gt;&lt;meta http-equiv=X-UA-Compatible</span><br><span class="line">content=<span class="string">&quot;IE=edge,chrome=1&quot;</span>&gt;&lt;meta name=renderer content=webkit&gt;&lt;meta</span><br><span class="line">name=viewport content=<span class="string">&quot;width=device-width,initial-scale=1,minimumscale=1,maximum-scale=1,user-scalable=no&quot;</span>&gt;&lt;<span class="built_in">link</span> rel=icon href=/favicon.ico&gt;</span><br><span class="line">&lt;title <span class="built_in">id</span>=bodyTitle&gt;比特教务管理系统&lt;/title&gt;&lt;<span class="built_in">link</span></span><br><span class="line">href=https://cdn.bootcss.com/jquerydatetimepicker/2.5.20/jquery.datetimepicker.css rel=stylesheet&gt;&lt;script</span><br><span class="line">src=https://cdn.bootcss.com/highlight.js/9.1.0/highlight.min.js&gt;&lt;/script&gt;&lt;script</span><br><span class="line">src=https://cdn.bootcss.com/highlightjs-line-numbers.js/2.5.0/highlightjs-linenumbers.min.js&gt;&lt;/script&gt;&lt;style&gt;html,</span><br><span class="line">	body,</span><br><span class="line">	<span class="comment">#app &#123;</span></span><br><span class="line">		height: 100%;</span><br><span class="line">		margin: 0px;</span><br><span class="line">		padding: 0px;</span><br><span class="line">	&#125;</span><br><span class="line">	.chromeframe &#123;</span><br><span class="line">		margin: 0.2em 0;</span><br><span class="line">		background: <span class="comment">#ccc;</span></span><br><span class="line">		color: <span class="comment">#000;</span></span><br><span class="line">		padding: 0.2em 0;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">#loader-wrapper &#123;</span></span><br><span class="line">		position: fixed;</span><br><span class="line">		top: 0;</span><br><span class="line">		left: 0;</span><br><span class="line">		width: 100%;</span><br><span class="line">		height: 100%;</span><br><span class="line">		z-index: 999999;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<p>text&#x2F;css</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Server: nginx/1.17.3</span><br><span class="line">Date: Thu, 10 Jun 2021 07:25:09 GMT</span><br><span class="line">Content-Type: text/css</span><br><span class="line">Last-Modified: Thu, 13 May 2021 09:01:26 GMT</span><br><span class="line">Connection: keep-alive</span><br><span class="line">ETag: W/<span class="string">&quot;609ceae6-3cfbe&quot;</span></span><br><span class="line">Content-Length: 249790</span><br><span class="line">@font-face&#123;font-family:element-icons;src:url(../../static/fonts/elementicons.535877f5.woff) format(<span class="string">&quot;woff&quot;</span>),url(../../static/fonts/elementicons.732389de.ttf) format(<span class="string">&quot;truetype&quot;</span>);font-weight:400;font-style:normal&#125;</span><br><span class="line">[class*=<span class="string">&quot; el-icon-&quot;</span>]</span><br></pre></td></tr></table></figure>
+<p>application&#x2F;javascript</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Server: nginx/1.17.3</span><br><span class="line">Date: Thu, 10 Jun 2021 07:25:09 GMT</span><br><span class="line">Content-Type: application/javascript; charset=utf-8</span><br><span class="line">Last-Modified: Thu, 13 May 2021 09:01:26 GMT</span><br><span class="line">Connection: keep-alive</span><br><span class="line">ETag: W/<span class="string">&quot;609ceae6-427d4&quot;</span></span><br><span class="line">Content-Length: 272340</span><br><span class="line">(window[<span class="string">&quot;webpackJsonp&quot;</span>]=window[<span class="string">&quot;webpackJsonp&quot;</span>]||[]).push([[<span class="string">&quot;app&quot;</span>],</span><br><span class="line">&#123;0:<span class="keyword">function</span>(t,e,n)&#123;t.exports=n(<span class="string">&quot;56d7&quot;</span>)&#125;,<span class="string">&quot;00b3&quot;</span>:<span class="keyword">function</span>(t,e,n)&#123;&#125;,<span class="string">&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>application&#x2F;json</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 200</span><br><span class="line">Server: nginx/1.17.3</span><br><span class="line">Date: Thu, 10 Jun 2021 07:25:10 GMT</span><br><span class="line">Content-Type: application/json;charset=UTF-8</span><br><span class="line">Connection: keep-alive</span><br><span class="line">X-Content-Type-Options: nosniff</span><br><span class="line">X-XSS-Protection: 1; mode=block</span><br><span class="line">Cache-Control: no-cache, no-store, max-age=0, must-revalidate</span><br><span class="line">Pragma: no-cache</span><br><span class="line">Expires: 0</span><br><span class="line">vary: accept-encoding</span><br><span class="line">Content-Length: 12268</span><br><span class="line"></span><br><span class="line">&#123;<span class="string">&quot;msg&quot;</span>:<span class="string">&quot;操作成功&quot;</span>,<span class="string">&quot;code&quot;</span>:200,<span class="string">&quot;permissions&quot;</span>:[] &#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+  
+
+
+
+
+
+
+
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2023 Swei
+    
+  </p>
+</footer>
+    
+    
+  </div>
+</div>
+</body>
+</html>
