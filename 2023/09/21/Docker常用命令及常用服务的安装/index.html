@@ -49,6 +49,14 @@
   <nav class="site-navigation">
     <ul>
       
+        <li><a href="/">主页</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+        <li><a href="/categories">分类</a></li>
+      
+        <li><a href="/tags">标签</a></li>
+      
     </ul>
   </nav>
 </header>
@@ -81,6 +89,8 @@
         <h1 id="一-什么是Docker"><a href="#一-什么是Docker" class="headerlink" title="一. 什么是Docker?"></a>一. 什么是Docker?</h1><p>Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的镜像中，然后发布到任何流行的 Linux或Windows操作系统的机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。</p>
 <h1 id="二-Docker安装"><a href="#二-Docker安装" class="headerlink" title="二. Docker安装"></a>二. Docker安装</h1><p>下面是一个通用的docker安装命令, 使用aliyun镜像下载</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ curl -fsSL get.docker.com -o get-docker.sh</span><br><span class="line">$ sudo sh get-docker.sh --mirror Aliyun</span><br></pre></td></tr></table></figure>
+ <span id="more"></span>
+
 <h1 id="三-Docker常用命令"><a href="#三-Docker常用命令" class="headerlink" title="三. Docker常用命令"></a>三. Docker常用命令</h1><p><strong>(1) 配置阿里云加速–拉取镜像时用国内的更快</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ sudo <span class="built_in">mkdir</span> -p /etc/docker</span><br><span class="line">$ sudo <span class="built_in">tee</span> /etc/docker/daemon.json &lt;&lt;-<span class="string">&#x27;EOF&#x27;</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="string">&quot;registry-mirrors&quot;</span>: [<span class="string">&quot;https://lz2nib3q.mirror.aliyuncs.com&quot;</span>] // 自己的镜像加速链接</span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br><span class="line">$ sudo systemctl daemon-reload</span><br><span class="line">$ sudo systemctl restart docker</span><br></pre></td></tr></table></figure>
 

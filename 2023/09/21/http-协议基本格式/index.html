@@ -49,6 +49,14 @@
   <nav class="site-navigation">
     <ul>
       
+        <li><a href="/">主页</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+        <li><a href="/categories">分类</a></li>
+      
+        <li><a href="/tags">标签</a></li>
+      
     </ul>
   </nav>
 </header>
@@ -81,11 +89,13 @@
         <h1 id="一-http是什么"><a href="#一-http是什么" class="headerlink" title="一. http是什么"></a>一. http是什么</h1><p>http(超文本传输协议)是应用层协议 </p>
 <p>http大部分基于传输层TCP协议实现, 其中http1.0、http1.1、http2.0均为TCP, http3基于UDP实现</p>
 <p>当我们使用浏览器访问一个网页时, 首先用户向服务器发送一个http请求, 然后服务器收到这个请求会返回一个http响应数据</p>
-<p><img src="https://img-blog.csdnimg.cn/9b2ca8cc3bbf4b40b603cbe8779f0ab3.png" alt="在这里插入图片描述">事实上, 当我们访问一个网站时, 可能涉及不止一次的http请求&#x2F;响应的交互过程</p>
+<p><img src="/..%5Cimg%5C9b2ca8cc3bbf4b40b603cbe8779f0ab3.png" alt="在这里插入图片描述">事实上, 当我们访问一个网站时, 可能涉及不止一次的http请求&#x2F;响应的交互过程</p>
+ <span id="more"></span>
+
 <h1 id="二-抓包工具"><a href="#二-抓包工具" class="headerlink" title="二. 抓包工具"></a>二. 抓包工具</h1><p>下面我们使用Fiddler对http请求&#x2F;响应进行抓取</p>
 <p><a  href ="https://www.telerik.com/fiddler/">Fiddler下载 </a></p>
 <p>打开Fiddler我们可以看到很多抓取到的http请求&#x2F;响应</p>
-<p><img src="https://img-blog.csdnimg.cn/40b6a9defaf44561a5d09edb8b7ce50d.png" alt="在这里插入图片描述"></p>
+<p>![在这里插入图片描述](E:\swei\Blog Space\source\img\40b6a9defaf44561a5d09edb8b7ce50d.png)</p>
 <h2 id="1-抓包工具原理"><a href="#1-抓包工具原理" class="headerlink" title="1. 抓包工具原理"></a>1. 抓包工具原理</h2><p>Fiddler相当于一个”代理”</p>
 <p>当浏览器访问一个网址时, 首先会把http请求先发给Fiddler, Fiddler再把请求转发给服务器, 当服务器返回数据时, Fiddler拿到返回数据, 再把数据交给浏览器</p>
 <p><img src="https://img-blog.csdnimg.cn/c83e9f6943ff4d418310bc41f99eec75.png" alt="在这里插入图片描述"></p>
